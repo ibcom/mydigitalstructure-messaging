@@ -1,0 +1,8 @@
+{	
+	"method": "admin/users",
+	"action": "GET",
+	"user":
+	{
+      "locale": "en_US"
+	}
+}

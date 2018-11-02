@@ -1,0 +1,32 @@
+{
+	"mydigitalstructure":
+	{
+		"hostname": "api.mydigitalstructure.com", 
+		"logon": "", 
+		"password": "", 
+		"email": "",
+		"testing": 
+		{
+			"status": "true",
+			"showData": "true",
+			"break": "-"
+		}
+	},
+	"yodlee":
+	{
+		"hostname" : "developer.api.yodlee.com",
+		"basepath" : "/ysl/restserver/v1",
+		"cobrand":
+		{
+	      "logon": "",
+	      "password": "",
+	      "locale": "en_US"
+		},
+		"user":
+		{
+	      "logon": "",
+	      "password": "",
+	      "locale": "en_US"
+		}
+	}
+}	

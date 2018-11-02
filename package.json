@@ -1,0 +1,35 @@
+{
+    "name": "mydigitalstructure-messaging",
+    "version": "1.0.0",
+    "licence": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/caolan/async/raw/master/LICENSE"
+        }
+    ],
+    "description": "node mydigitalstructure messaging",
+    "preferGlobal": "true",
+    "main": "app.js",
+    "bin": {
+        "mydigitalstructure": "mydigitalstructure.js"
+    },
+    "author": "Mark Byers",
+    "keywords": [
+        "mydigitalstructure, messaging, email"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ibcom/mydigitalstructure-messaging.git"
+    },
+    "dependencies": {
+        "cron-parser": "0.7.0",
+        "lodash": "*",
+        "long-timeout": "0.0.2",
+        "moment": "^2.19.1",
+        "mydigitalstructure": "*",
+        "node-schedule": "0.2.9"
+    },
+    "engines": {
+        "node": "*"
+    }
+}
