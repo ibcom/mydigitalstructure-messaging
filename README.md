@@ -1,2 +1,2 @@
 # mydigitalstructure-messaging
-Messaging services
+Node service to check for new emails.
