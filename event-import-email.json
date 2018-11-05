@@ -1,0 +1,8 @@
+{	
+	"method": "import/email",
+	"action": "GET",
+	"user":
+	{
+      "locale": "en_US"
+	}
+}

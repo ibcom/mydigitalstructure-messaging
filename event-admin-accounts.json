@@ -1,5 +1,5 @@
 {	
-	"method": "admin/users",
+	"method": "admin/accounts",
 	"action": "GET",
 	"user":
 	{
