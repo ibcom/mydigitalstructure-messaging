@@ -43,9 +43,9 @@ exports.handler = function (event, context)
 			app.import.start(app.data.event);
 		}
 
-		if (app.data.event.method == 'admin/accounts')
+		if (app.data.event.method == 'admin/spaces')
 		{
-			app.import.prepare.destination.accounts(app.data.event);
+			app.import.prepare.spaces(app.data.event);
 		}
 	}
 
@@ -120,7 +120,9 @@ exports.handler = function (event, context)
 						});
 					})
 
-					if (app.data.event.method == 'import/sync')
+					mydigitalstructure._util.testing.data(app.data.event.method, 'app.import.prepare.spaces');
+
+					if (app.data.event.method == 'import/email')
 					{
 						app.import.sync();
 					}
@@ -139,7 +141,7 @@ exports.handler = function (event, context)
 					{
 						url: '/rpc/messaging/?method=SETUP_MESSAGING_ACCOUNT_SEARCH&advanced=1'
 					},
-					'criteria={"fields":[{"name":"title"},{"name":"email"},{"name":"server"},{"name":"authtypetext"},{"name":"accountname"}],"filters":[{"name": "status","comparison":"EQUAL_TO","value1":"1"}],"options":{"rows":50}}',
+					'criteria={"fields":[{"name":"title"},{"name":"email"},{"name":"server"}],"filters":[{"name": "type","comparison":"EQUAL_TO","value1":"5"}],"options":{"rows":50}}',
 					app.import.prepare.accounts);
 				}
 				else
@@ -178,11 +180,13 @@ exports.handler = function (event, context)
 					if (_.isUndefined(app.import.data.account))
 					{
 						mydigitalstructure._util.testing.message('ALL DONE!!', 'app.import.process.accounts.sync');
-						app.import.process.switchBack();
+						app.import.switchBack();
 					}
 					else
 					{
-						var data = 'id=' + app.import.data.account.id;
+						mydigitalstructure._util.testing.message(app.import.data.account, 'app.import.process.accounts.sync');
+
+						var data = 'account=' + app.import.data.account.id;
 
 						mydigitalstructure.send(
 						{
@@ -193,12 +197,12 @@ exports.handler = function (event, context)
 					}
 				},
 
-				done: function ()
+				done: function (param, data)
 				{
 					var account = _.find(app.import.data.accounts, function (account) {return account.id == app.import.data.account.id})
 					account.processed = true;
 
-					//mydigitalstructure._util.testing.message(sourceAccount.accountName + ' / ' + _.size(app.import.process.data.destinationTransactions) + ' transaction(s)', 'app.import.process.destination.transactions::!DONE');
+					mydigitalstructure._util.testing.message(app.import.data.account, 'app.import.process.accounts.sync::DONE!');
 
 					app.import.process.accounts.sync();
 				}	
@@ -250,7 +254,7 @@ exports.handler = function (event, context)
 					url: '/rpc/core/?method=CORE_SPACE_MANAGE'
 				},
 				data,
-				app.import.process.switchBack,
+				app.import.switchBack,
 				options);
 			}
 			else
@@ -267,7 +271,7 @@ exports.handler = function (event, context)
 					{
 						if (options.message != undefined)
 						{
-							var data = 'to=mark.byers@ibcom.biz&fromemail=support@ibcom.biz&subject=[Email Check Service] ' + options.message
+							var data = 'to=mark.byers@ibcom.biz&fromemail=support@ibcom.biz&subject=[Messaging (Email Check) Service] ' + options.message
 
 							mydigitalstructure.send(
 							{

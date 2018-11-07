@@ -1,5 +1,5 @@
 {	
-	"method": "admin/accounts",
+	"method": "admin/spaces",
 	"action": "GET",
 	"user":
 	{
